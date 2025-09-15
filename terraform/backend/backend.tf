@@ -13,11 +13,11 @@ terraform {
 
   # S3 Backend Configuration
   backend "s3" {
-    bucket         = "aws-devops-terraform-state"
+    bucket         = "aws-devops-terraform-state-619564767540"
     key            = "global/s3/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
-    dynamodb_table = "terraform-state-lock"
+    dynamodb_table = "aws-devops-terraform-locks"
     
     # Enable state locking and consistency checking
     # This prevents concurrent modifications to the same state

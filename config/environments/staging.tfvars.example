@@ -1,0 +1,48 @@
+# Staging Environment Configuration
+# Copy this file to staging.tfvars and update with your values
+
+# AWS Configuration
+aws_region = "us-east-1"
+aws_profile = "default"
+
+# Project Configuration
+project_name = "aws-devops-automation"
+environment = "staging"
+cost_center = "devops"
+
+# Networking Configuration
+vpc_cidr = "10.1.0.0/16"
+public_subnets = ["10.1.1.0/24", "10.1.2.0/24"]
+private_subnets = ["10.1.10.0/24", "10.1.11.0/24"]
+database_subnets = ["10.1.20.0/24", "10.1.21.0/24"]
+
+# Compute Configuration
+instance_type = "t3.small"
+min_size = 2
+max_size = 4
+desired_capacity = 2
+
+# Database Configuration
+db_instance_class = "db.t3.small"
+db_allocated_storage = 50
+db_engine = "postgres"
+db_engine_version = "14.7"
+
+# Monitoring Configuration
+enable_cloudwatch = true
+enable_xray = true
+enable_cloudtrail = true
+
+# Security Configuration
+enable_guardduty = true
+enable_config = true
+enable_macie = true
+
+# Tags
+tags = {
+  Environment = "staging"
+  Project     = "aws-devops-automation"
+  Owner       = "devops-team"
+  CostCenter  = "devops"
+  ManagedBy   = "terraform"
+}

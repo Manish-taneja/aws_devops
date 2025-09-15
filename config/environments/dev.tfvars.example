@@ -1,0 +1,48 @@
+# Development Environment Configuration
+# Copy this file to dev.tfvars and update with your values
+
+# AWS Configuration
+aws_region = "us-east-1"
+aws_profile = "default"
+
+# Project Configuration
+project_name = "aws-devops-automation"
+environment = "dev"
+cost_center = "devops"
+
+# Networking Configuration
+vpc_cidr = "10.0.0.0/16"
+public_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnets = ["10.0.10.0/24", "10.0.11.0/24"]
+database_subnets = ["10.0.20.0/24", "10.0.21.0/24"]
+
+# Compute Configuration
+instance_type = "t3.micro"
+min_size = 1
+max_size = 3
+desired_capacity = 2
+
+# Database Configuration
+db_instance_class = "db.t3.micro"
+db_allocated_storage = 20
+db_engine = "postgres"
+db_engine_version = "14.7"
+
+# Monitoring Configuration
+enable_cloudwatch = true
+enable_xray = true
+enable_cloudtrail = true
+
+# Security Configuration
+enable_guardduty = true
+enable_config = true
+enable_macie = false  # Disabled for dev environment
+
+# Tags
+tags = {
+  Environment = "dev"
+  Project     = "aws-devops-automation"
+  Owner       = "devops-team"
+  CostCenter  = "devops"
+  ManagedBy   = "terraform"
+}

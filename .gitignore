@@ -1,3 +1,19 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+*.tfvars
+!example.tfvars
+!*.tfvars.example
+
+# AWS
+.aws/
+aws-credentials
+*.pem
+*.key
+
 # Python
 __pycache__/
 *.py[cod]
@@ -45,25 +61,46 @@ ehthumbs.db
 Thumbs.db
 
 # Logs
-logs/
 *.log
+logs/
+log/
 
-# Data files
-data/
-*.json
-!config/*.json
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-
-# Environment variables
+# Secrets and sensitive data
+secrets/
+*.secret
 .env
 .env.local
-.env.*.local
+.env.production
+.env.staging
 
-# Migration state files
-migration_state.json
-migration_report.json
-analysis_results.json 
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# Monitoring and metrics
+monitoring/data/
+metrics/cache/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Kubernetes
+*.kubeconfig
+
+# Jenkins
+.jenkins/
+
+# Cost optimization reports
+cost-reports/
+*.csv
+*.xlsx
+
+# Audit logs
+audit-logs/

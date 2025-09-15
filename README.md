@@ -1,344 +1,353 @@
-# Freshdesk to Jira ITSM Migration Tool
+# AWS DevOps Automation Platform
 
-A comprehensive, configurable migration tool to transfer tickets, comments, attachments, and user details from Freshdesk ITSM to Jira ITSM. Built to handle large-scale migrations with enterprise-grade features.
+A comprehensive automation platform for managing AWS infrastructure, deployments, monitoring, and observability through Infrastructure as Code (IaC) and automated workflows.
 
-## 🎯 **Overview**
+## 🎯 Project Overview
 
-This tool is designed to migrate data from multiple Freshdesk instances to Jira ITSM, supporting:
-- **500,000+ tickets** with efficient batch processing
-- **Multiple Freshdesk instances** with different configurations
-- **Complete data transfer** including tickets, comments, attachments, users, and custom fields
-- **Enterprise-grade features** with robust error handling and progress tracking
+This project provides a complete DevOps automation solution for AWS account management, including:
+- **Infrastructure as Code** using Terraform
+- **Automated provisioning and deprovisioning**
+- **Monitoring and observability** setup
+- **CI/CD pipelines** for infrastructure deployments
+- **Security and compliance** automation
+- **Cost optimization** and management
 
-## 📁 **Project Structure**
+## 📁 Complete Directory Structure
 
 ```
-octo-engine/
-├── config/
-│   └── migration_config.yaml      # Main configuration file
-├── docs/
-│   └── MIGRATION_GUIDE.md         # Comprehensive migration guide
-├── scripts/
-│   ├── setup_migration.py         # Interactive setup script
-│   └── quick_start.py             # Quick start and testing script
-├── src/
-│   ├── main.py                    # Main CLI entry point
-│   ├── adapters/                  # API adapters
-│   │   ├── freshdesk_adapter.py   # Freshdesk API integration
-│   │   └── jira_adapter.py        # Jira API integration
-│   ├── core/                      # Core migration logic
-│   │   ├── config_manager.py      # Configuration management
-│   │   ├── migration_manager.py   # Main migration orchestration
-│   │   ├── status_manager.py      # Progress tracking
-│   │   └── analyzer.py            # Data analysis
-│   ├── mappers/                   # Data transformation
-│   │   └── data_mapper.py         # Freshdesk to Jira mapping
-│   └── utils/                     # Utilities
-│       ├── logger.py              # Logging configuration
-│       └── validator.py           # Configuration validation
-├── logs/                          # Migration logs (created during runtime)
-├── data/                          # Temporary data storage (created during runtime)
-├── README.md                      # Project overview
-└── requirements.txt               # Python dependencies
+aws_devops/
+├── README.md                           # This file
+├── .gitignore                          # Git ignore rules
+├── requirements.txt                    # Python dependencies
+├── terraform/                          # Infrastructure as Code
+│   ├── environments/                   # Environment-specific configurations
+│   │   ├── dev/                        # Development environment
+│   │   ├── staging/                    # Staging environment  
+│   │   └── prod/                       # Production environment
+│   ├── modules/                        # Reusable Terraform modules
+│   │   ├── networking/                 # VPC, subnets, routing
+│   │   ├── compute/                    # EC2, Auto Scaling
+│   │   ├── storage/                    # S3, EBS
+│   │   ├── security/                   # IAM, Security Groups
+│   │   ├── monitoring/                 # CloudWatch, logging
+│   │   └── databases/                  # RDS, DynamoDB
+│   ├── global/                         # Global resources (IAM, etc.)
+│   └── backend/                        # Terraform backend configuration
+├── scripts/                            # Automation scripts
+│   ├── deployment/                     # Deployment automation
+│   ├── monitoring/                     # Monitoring setup scripts
+│   ├── security/                       # Security automation
+│   ├── cost-optimization/              # Cost management scripts
+│   └── utilities/                      # Utility scripts
+├── pipelines/                          # CI/CD pipeline definitions
+│   ├── github-actions/                 # GitHub Actions workflows
+│   ├── jenkins/                        # Jenkins pipeline definitions
+│   └── aws-codepipeline/               # AWS CodePipeline definitions
+├── monitoring/                         # Monitoring and observability
+│   ├── dashboards/                     # CloudWatch dashboards
+│   ├── alerts/                         # Alert configurations
+│   ├── log-aggregation/                # Log management
+│   └── metrics/                        # Custom metrics
+├── security/                           # Security configurations
+│   ├── iam/                           # IAM policies and roles
+│   ├── compliance/                     # Compliance automation
+│   ├── secrets/                        # Secrets management
+│   └── audit/                          # Audit configurations
+├── config/                             # Configuration files
+│   ├── environments/                   # Environment configurations
+│   ├── variables/                      # Variable definitions
+│   └── policies/                       # Policy configurations
+├── docs/                               # Documentation
+│   ├── architecture/                   # Architecture diagrams
+│   ├── runbooks/                       # Operational runbooks
+│   ├── procedures/                     # Standard procedures
+│   └── troubleshooting/                # Troubleshooting guides
+└── tests/                              # Testing
+    ├── terraform/                      # Terraform tests
+    ├── integration/                    # Integration tests
+    └── security/                       # Security tests
 ```
 
-## 🚀 **Quick Start**
+## 🛠️ Key Components Created
 
-### **1. Install Dependencies**
+### 1. Infrastructure as Code (Terraform)
+- **Networking Module**: VPC, public/private/database subnets, NAT Gateway, route tables
+- **Environment Configurations**: Separate configs for dev, staging, and production
+- **Backend Configuration**: S3 backend with DynamoDB state locking
+- **Security Groups**: Default security group with proper rules
+
+### 2. Automation Scripts
+- **AWS Account Setup**: `scripts/utilities/setup_aws_account.py` - Initial AWS configuration
+- **Security Compliance**: `scripts/security/compliance_check.py` - Security audits
+- **Monitoring Deployment**: `scripts/monitoring/deploy_monitoring.py` - Monitoring stack setup
+
+### 3. CI/CD Pipelines
+- **GitHub Actions**: Automated Terraform deployments with security scanning and cost estimation
+- **Multi-environment support**: Separate workflows for dev, staging, and production
+
+### 4. Monitoring & Observability
+- **CloudWatch Dashboard**: Comprehensive monitoring dashboard
+- **Log Groups**: Structured logging for application, security, and audit logs
+- **Alerts**: Pre-configured CloudWatch alarms
+
+### 5. Security & Compliance
+- **IAM Roles**: Proper IAM roles and policies
+- **Security Checks**: Automated compliance checking
+- **Secrets Management**: Framework for secure secret handling
+
+### 6. Configuration Management
+- **Environment Variables**: Separate configs for each environment
+- **Variable Templates**: Example configurations for easy setup
+
+## 🚀 Ready-to-Use Features
+
+### Quick Start Commands
 ```bash
+# 1. Setup AWS account
+python scripts/utilities/setup_aws_account.py setup-all
+
+# 2. Deploy infrastructure
+cd terraform/environments/dev
+terraform init
+terraform apply
+
+# 3. Deploy monitoring
+python scripts/monitoring/deploy_monitoring.py deploy-monitoring
+
+# 4. Run security checks
+python scripts/security/compliance_check.py check-compliance
+```
+
+### Key Benefits
+- ✅ **Production Ready**: Follows AWS best practices
+- ✅ **Multi-Environment**: Dev, staging, and production support
+- ✅ **Security First**: Built-in security and compliance checks
+- ✅ **Automated**: CI/CD pipelines for all deployments
+- ✅ **Observable**: Comprehensive monitoring and logging
+- ✅ **Scalable**: Modular design for easy expansion
+- ✅ **Cost Optimized**: Built-in cost management tools
+
+## 🏁 Getting Started
+
+### Prerequisites
+- **AWS CLI** (version 2.x)
+- **Terraform** (version >= 1.0)
+- **Python** (version 3.8+)
+- **Git**
+
+### Step 1: Clone and Setup
+```bash
+# Clone the repository
+git clone https://github.com/Manish-taneja/aws_devops.git
+cd aws_devops
+
+# Install Python dependencies
 pip install -r requirements.txt
+
+# Configure AWS credentials
+aws configure
 ```
 
-### **2. Configure Your Migration**
-You have two options:
-
-**Option A: Interactive Setup (Recommended)**
-```bash
-python scripts/setup_migration.py
-```
-
-**Option B: Manual Configuration**
-Edit `config/migration_config.yaml` with your details:
-- Freshdesk URLs and API keys
-- Jira URLs and API tokens
-- Field mappings
-- Migration settings
-
-### **3. Test Your Setup**
-```bash
-python scripts/quick_start.py
-```
-
-### **4. Run the Migration Process**
-
-**Step 1: Validate Configuration**
-```bash
-python src/main.py validate
-```
-
-**Step 2: Analyze Your Data**
-```bash
-python src/main.py analyze --limit 1000
-```
-
-**Step 3: Dry Run (Test without creating data)**
-```bash
-python src/main.py migrate --dry-run
-```
-
-**Step 4: Full Migration**
-```bash
-python src/main.py migrate
-```
-
-## 🔧 **Key Features Built**
-
-### **✅ Configurable for Multiple Instances**
-- Support for multiple Freshdesk instances
-- Different configurations per instance
-- Batch processing for large datasets
-- Instance-specific field mappings
-
-### **✅ Complete Data Migration**
-- **Tickets**: All ticket data with custom fields
-- **Comments**: Full conversation history with HTML to Jira format conversion
-- **Attachments**: File downloads and uploads with size/type filtering
-- **Users**: User creation and mapping with role preservation
-- **Custom Fields**: Flexible field mapping with validation
-
-### **✅ Enterprise-Grade Features**
-- **Rate Limiting**: Respects API limits for both Freshdesk and Jira
-- **Error Handling**: Robust retry logic with exponential backoff
-- **Progress Tracking**: Real-time status updates and ETA calculations
-- **Checkpointing**: Resume interrupted migrations from last checkpoint
-- **Logging**: Comprehensive audit trail with rotation and compression
-
-### **✅ Performance Optimized**
-- **Batch Processing**: Configurable batch sizes (default: 100 tickets)
-- **Memory Management**: Efficient data handling for large datasets
-- **Concurrent Operations**: Parallel processing where possible
-- **Large Dataset Support**: Handles 500k+ tickets with optimized memory usage
-
-### **✅ User-Friendly**
-- **CLI Interface**: Easy-to-use commands with help and progress bars
-- **Interactive Setup**: Guided configuration with validation
-- **Status Monitoring**: Real-time progress with detailed statistics
-- **Comprehensive Logging**: Detailed error reporting and debugging
-
-### **✅ Data Transformation**
-- **HTML to Jira Format**: Automatic conversion of HTML content
-- **Field Mapping**: Flexible priority, status, and custom field mappings
-- **User Mapping**: Intelligent user creation and assignment
-- **Attachment Processing**: Size validation and type filtering
-
-## 📋 **Prerequisites**
-
-### **System Requirements**
-- Python 3.8 or higher
-- Minimum 4GB RAM (8GB recommended for large migrations)
-- Sufficient disk space for attachments and logs
-- Network access to both Freshdesk and Jira instances
-
-### **API Access Requirements**
-- **Freshdesk Enterprise**: API access with appropriate permissions
-- **Jira Premium/Enterprise**: API access with admin permissions for user creation
-- Valid API keys/tokens for both systems
-
-### **Required Permissions**
-- **Freshdesk**: Read access to tickets, users, comments, and attachments
-- **Jira**: Create issues, users, comments, and attachments
-
-## ⚙️ **Configuration**
-
-### **Freshdesk Configuration**
-```yaml
-freshdesk:
-  instances:
-    - name: "production"
-      url: "https://your-company.freshdesk.com"
-      api_key: "your_api_key"
-      rate_limit: 100
-      timeout: 30
-      batch_size: 100
-```
-
-### **Jira Configuration**
-```yaml
-jira:
-  url: "https://your-company.atlassian.net"
-  username: "your_email@company.com"
-  api_token: "your_api_token"
-  project_key: "ITSM"
-  issue_type: "Incident"
-  rate_limit: 100
-  timeout: 30
-  batch_size: 50
-```
-
-### **Field Mapping**
-```yaml
-field_mapping:
-  priority:
-    "low": "Low"
-    "medium": "Medium"
-    "high": "High"
-    "urgent": "Highest"
-  
-  status:
-    "open": "To Do"
-    "pending": "In Progress"
-    "resolved": "Done"
-    "closed": "Done"
-  
-  custom_fields:
-    "category": "components"
-    "department": "customfield_10001"
-```
-
-## 🛠️ **Available Commands**
+### Step 2: Initial AWS Account Setup
+Run the AWS account setup script to configure your AWS account with the necessary services and resources:
 
 ```bash
-# Main commands
-python src/main.py migrate          # Execute migration
-python src/main.py validate         # Validate configuration
-python src/main.py analyze          # Analyze data structure
-python src/main.py status           # Show migration status
-python src/main.py resume           # Resume interrupted migration
+# Check current setup
+python scripts/utilities/setup_aws_account.py check-setup
 
-# Options
-python src/main.py migrate --dry-run                    # Test without creating data
-python src/main.py migrate --instance instance1         # Migrate specific instance
-python src/main.py analyze --limit 1000                 # Analyze with limit
-python src/main.py --help                              # Show all options
+# Setup Terraform backend (S3 bucket and DynamoDB table)
+python scripts/utilities/setup_aws_account.py setup-backend
+
+# Setup monitoring and observability
+python scripts/utilities/setup_aws_account.py setup-monitoring
+
+# Or run complete setup
+python scripts/utilities/setup_aws_account.py setup-all
 ```
 
-## 📊 **Migration Components**
+### Step 3: Configure Environment Variables
+Copy and customize the environment configuration:
 
-### **What Gets Migrated**
+```bash
+# Copy the example configuration
+cp config/environments/dev.tfvars.example config/environments/dev.tfvars
 
-#### **1. Tickets/Issues**
-- **Subject** → Summary
-- **Description** → Description (HTML converted to Jira format)
-- **Priority** → Priority (mapped)
-- **Status** → Status (mapped)
-- **Assignee** → Assignee (user mapping)
-- **Reporter** → Reporter (user mapping)
-- **Created Date** → Created
-- **Updated Date** → Updated
-- **Custom Fields** → Custom Fields (mapped)
+# Edit the configuration with your specific values
+nano config/environments/dev.tfvars
+```
 
-#### **2. Comments**
-- **Comment Body** → Comment (HTML converted)
-- **Author** → Author (user mapping)
-- **Created Date** → Created
-- **Private/Public** → Internal/Public
+### Step 4: Deploy Infrastructure
+Deploy the development environment infrastructure:
 
-#### **3. Attachments**
-- **File Name** → File Name
-- **File Content** → File Content
-- **File Size** → File Size (with configurable limits)
-- **Content Type** → Content Type
+```bash
+# Navigate to the development environment
+cd terraform/environments/dev
 
-#### **4. Users**
-- **Name** → Display Name
-- **Email** → Email Address
-- **Active Status** → Active Status
-- **Role** → Role (mapped)
+# Initialize Terraform
+terraform init
 
-## 🔍 **Data Analysis Features**
+# Plan the deployment
+terraform plan
 
-The tool includes comprehensive data analysis capabilities:
+# Apply the configuration
+terraform apply
+```
 
-- **Ticket Distribution**: Status, priority, and type analysis
-- **User Analysis**: Active/inactive users, role distribution
-- **Custom Field Mapping**: Field usage and mapping recommendations
-- **Attachment Analysis**: File types, sizes, and storage requirements
-- **Migration Recommendations**: Automated suggestions for optimal configuration
+### Step 5: Verify Deployment
+Check that all resources were created successfully:
 
-## 📈 **Performance & Monitoring**
+```bash
+# View Terraform outputs
+terraform output
 
-### **Batch Processing**
-- Configurable batch sizes (default: 100 tickets)
-- Memory-efficient processing for large datasets
-- Progress tracking with ETA calculations
+# Run security compliance checks
+python scripts/security/compliance_check.py check-compliance
 
-### **Rate Limiting**
-- Respects API limits for both systems
-- Configurable rate limits per instance
-- Automatic retry with exponential backoff
+# Check monitoring setup
+aws cloudwatch list-dashboards
+```
 
-### **Checkpointing**
-- Automatic progress saving
-- Resume capability from any interruption
-- Configurable checkpoint intervals
+## 📋 Common Commands
 
-### **Monitoring**
-- Real-time progress updates
-- Success/failure statistics
-- Performance metrics
-- Error tracking and reporting
+### Infrastructure Management
+```bash
+# Deploy to development
+cd terraform/environments/dev
+terraform apply
 
-## 🚨 **Error Handling**
+# Deploy to staging
+cd terraform/environments/staging
+terraform apply
 
-### **Retry Logic**
-- Automatic retry for failed requests
-- Exponential backoff strategy
-- Configurable retry count and delays
+# Deploy to production
+cd terraform/environments/prod
+terraform apply
 
-### **Error Logging**
-- Detailed error logging with context
-- Error categorization and reporting
-- Failed item tracking for manual review
+# Destroy infrastructure (be careful!)
+terraform destroy
+```
 
-### **Continue on Error**
-- Option to continue despite individual failures
-- Success rate calculation and reporting
-- Comprehensive error summary
+### Security and Compliance
+```bash
+# Run all security checks
+python scripts/security/compliance_check.py check-compliance
 
-## 📚 **Documentation**
+# Check specific security aspects
+python scripts/security/compliance_check.py check-s3-encryption
+python scripts/security/compliance_check.py check-mfa
+```
 
-- **[Migration Guide](docs/MIGRATION_GUIDE.md)**: Comprehensive step-by-step guide
-- **Configuration Examples**: Sample configurations for different scenarios
-- **Troubleshooting Guide**: Common issues and solutions
-- **Best Practices**: Migration planning and execution tips
+### Monitoring and Observability
+```bash
+# Deploy monitoring stack
+python scripts/monitoring/deploy_monitoring.py deploy-monitoring
 
-## 🆘 **Support & Troubleshooting**
+# Check CloudWatch metrics
+aws cloudwatch list-metrics --namespace AWS/EC2
 
-### **Common Issues**
-1. **API Authentication Errors**: Verify API keys and permissions
-2. **Rate Limiting Issues**: Adjust rate limits in configuration
-3. **Large Attachment Issues**: Configure size limits and file type filters
-4. **Memory Issues**: Reduce batch sizes for large datasets
+# View recent logs
+aws logs tail /aws/aws-devops-automation/application --follow
+```
 
-### **Getting Help**
-1. Check the logs at `logs/migration.log`
-2. Review the migration report at `data/migration_report.json`
-3. Consult the troubleshooting section in the migration guide
-4. Use the validation command to check configuration
+### Cost Optimization
+```bash
+# Generate cost report
+python scripts/cost-optimization/generate_report.py
 
-## 🤝 **Contributing**
+# Check for unused resources
+python scripts/cost-optimization/find_unused_resources.py
+```
 
-This tool is designed to be extensible and configurable. Key areas for customization:
+## 🔒 Security Features
+- **IAM roles with least privilege**
+- **Encrypted S3 buckets**
+- **Security group restrictions**
+- **Automated compliance checks**
+- **Audit logging enabled**
+- **MFA enforcement**
+- **Root account monitoring**
 
-- **Custom Field Mappings**: Add new field mappings in configuration
-- **Data Transformations**: Modify the data mapper for custom logic
-- **API Adapters**: Extend adapters for additional API features
-- **Validation Rules**: Add custom validation logic
+## 🚨 Troubleshooting
 
-## 📄 **License**
+### Common Issues
+1. **Terraform Backend Error**
+   ```bash
+   # Reinitialize with backend config
+   terraform init -reconfigure
+   ```
 
-This project is designed for enterprise use. Please ensure compliance with your organization's policies and the terms of service for both Freshdesk and Jira.
+2. **AWS Credentials Error**
+   ```bash
+   # Verify credentials
+   aws sts get-caller-identity
+   ```
+
+3. **Permission Denied**
+   - Ensure your AWS user/role has the necessary permissions
+   - Check IAM policies for required services
+
+### Getting Help
+- **Documentation**: Check the `docs/` directory for detailed guides
+- **Runbooks**: See `docs/runbooks/` for operational procedures
+- **Troubleshooting**: Refer to `docs/troubleshooting/` for common issues
+
+## 🔄 CI/CD Setup
+
+If you want to use GitHub Actions for automated deployments:
+
+1. **Fork the repository** to your GitHub account
+2. **Add AWS credentials** as GitHub Secrets:
+   - `AWS_ACCESS_KEY_ID`
+   - `AWS_SECRET_ACCESS_KEY`
+3. **Push changes** to trigger the CI/CD pipeline
+
+## 📊 Monitoring Your Infrastructure
+
+Access the monitoring dashboards:
+
+1. **CloudWatch Dashboard**: Open AWS Console → CloudWatch → Dashboards
+2. **Application Logs**: CloudWatch → Log groups → `/aws/aws-devops-automation/application`
+3. **Security Logs**: CloudWatch → Log groups → `/aws/aws-devops-automation/security`
+
+## 🎯 Next Steps
+
+After completing the quick start:
+
+1. **Review the architecture** in `docs/architecture/`
+2. **Customize the configuration** for your specific needs
+3. **Set up additional environments** (staging, production)
+4. **Configure monitoring alerts** based on your requirements
+5. **Implement security best practices** from the compliance checks
+
+## 🔐 Security Notes
+
+- Never commit sensitive information like AWS keys or passwords
+- Use AWS Secrets Manager for storing secrets
+- Regularly run security compliance checks
+- Keep dependencies updated
+- Monitor for unusual activity
+
+## 🤝 Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Add tests for new functionality
+4. Ensure all tests pass
+5. Submit a pull request
+
+## 📞 Support
+
+For issues or questions:
+
+1. Check the troubleshooting guides
+2. Review the documentation
+3. Run the diagnostic scripts
+4. Contact the DevOps team
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-## 🎉 **Ready to Start?**
-
-Your Freshdesk to Jira ITSM migration tool is now ready! Start with:
-
-```bash
-python scripts/setup_migration.py
-```
-
-This will guide you through the entire configuration process and get you ready for a successful migration.
-
-For detailed instructions, see the [Migration Guide](docs/MIGRATION_GUIDE.md). 
+**Remember**: This is a production-ready setup. Always test changes in development before applying to production environments.

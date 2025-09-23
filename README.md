@@ -1,21 +1,25 @@
-# AWS DevOps Automation Platform
+# AWS Super Multi-Agent MCP Server
 
-A comprehensive automation platform for managing AWS infrastructure, deployments, monitoring, and observability through Infrastructure as Code (IaC) and automated workflows.
+A comprehensive AI-powered automation platform for managing AWS infrastructure, deployments, monitoring, and observability through natural language commands and multi-agent orchestration.
 
 ## 🎯 Project Overview
 
-This project provides a complete DevOps automation solution for AWS account management, including:
+This project provides a complete AI-powered automation solution for AWS account management, including:
+- **Natural Language Interface** for AWS operations
+- **Multi-Agent Orchestration** (Infrastructure, Configuration, Operations, Cost, Security, Monitoring, ML)
 - **Infrastructure as Code** using Terraform
+- **Configuration Management** using Ansible
 - **Automated provisioning and deprovisioning**
 - **Monitoring and observability** setup
 - **CI/CD pipelines** for infrastructure deployments
 - **Security and compliance** automation
 - **Cost optimization** and management
+- **Machine Learning** operations with AWS Bedrock and SageMaker
 
 ## 📁 Complete Directory Structure
 
 ```
-aws_devops/
+aws-super-mcp/
 ├── README.md                           # This file
 ├── .gitignore                          # Git ignore rules
 ├── requirements.txt                    # Python dependencies
@@ -138,8 +142,8 @@ python scripts/security/compliance_check.py check-compliance
 ### Step 1: Clone and Setup
 ```bash
 # Clone the repository
-git clone https://github.com/Manish-taneja/aws_devops.git
-cd aws_devops
+git clone https://github.com/Manish-taneja/aws-super-mcp.git
+cd aws-super-mcp
 
 # Install Python dependencies
 pip install -r requirements.txt

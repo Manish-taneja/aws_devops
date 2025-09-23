@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-This guide will help you get started with the AWS DevOps Automation Platform quickly.
+This guide will help you get started with the AWS Super Multi-Agent MCP Server quickly.
 
 ## Prerequisites
 
@@ -15,8 +15,8 @@ Before you begin, ensure you have the following installed:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Manish-taneja/aws_devops.git
-cd aws_devops
+git clone https://github.com/Manish-taneja/aws-super-mcp.git
+cd aws-super-mcp
 
 # Install Python dependencies
 pip install -r requirements.txt
